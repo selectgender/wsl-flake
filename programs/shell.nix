@@ -1,4 +1,8 @@
 { config, pkgs, ... }: {
+  home.packages = with pkgs; [
+    repgrep
+  ];
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -101,4 +105,18 @@
       };
     };
   };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [ "--cmd" "cd" ];
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.fd.enable = true;
+  programs.ripgrep.enable = true;
 }

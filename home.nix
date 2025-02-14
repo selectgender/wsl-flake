@@ -17,8 +17,4 @@
     userName = "selectgender";
     userEmail = "sylviaviajung@gmail.com";
   };
-
-  programs.fzf.enable = true;
-  programs.fd.enable = true;
-  programs.ripgrep.enable = true;
 }
