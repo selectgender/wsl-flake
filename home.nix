@@ -4,6 +4,7 @@
     ./programs/kak
     ./programs/tmux.nix
     ./programs/gitui.nix
+    ./programs/broot.nix
     ./programs/shell.nix
   ];
 

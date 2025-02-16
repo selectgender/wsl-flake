@@ -3,6 +3,8 @@
   # absolutely idiotic
   # literally have to take matters into your own hands for ANYTHING to work
   # decently... fuck this shit
+  # the theme option literally just appends to the default settings,,
+  # and the default settings get priority anyways >:(
 
   home.packages = with pkgs; [
     gitui
