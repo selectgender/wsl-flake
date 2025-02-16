@@ -21,26 +21,30 @@ in
     keyMode = "vi";
     prefix = "C-a";
     reverseSplit = true;
+    terminal = "screen-256color";
 
-    extraConfig = ''
-      set-option -sa terminal-overrides ",xterm*:Tc"
+    extraConfig = with config.lib.stylix.colors; ''
+    set-option -sa terminal-overrides ",xterm*:Tc"
 
-      bind -n C-h select-pane -L
-      bind -n C-j select-pane -D
-      bind -n C-k select-pane -U
-      bind -n C-l select-pane -R
+    bind -n C-h select-pane -L
+    bind -n C-j select-pane -D
+    bind -n C-k select-pane -U
+    bind -n C-l select-pane -R
 
-      bind j swap-pane -D
-      bind k swap-pane -U
+    bind j swap-pane -D
+    bind k swap-pane -U
 
-      set-option -g renumber-windows on
+    set-option -g renumber-windows on
 
-      bind v split-window -h -c "#{pane_current_path}"
-      bind s split-window -v -c "#{pane_current_path}"
+    bind v split-window -h -c "#{pane_current_path}"
+    bind s split-window -v -c "#{pane_current_path}"
 
-      bind-key -T copy-mode-vi v send-keys -X begin-selection
-      bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-      bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+    bind-key -T copy-mode-vi v send-keys -X begin-selection
+    bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+    bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
+    set -g @minimal-tmux-fg "#${base05}"
+    set -g @minimal-tmux-bg "#${base02}"
     '';
 
     plugins = with pkgs; [

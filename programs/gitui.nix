@@ -18,6 +18,7 @@
     move_down: Some(( code: Char('j'), modifiers: "")),
   '';
 
+  # not using withHashtags bc apparently it messes up the colors :(
   home.file.".config/gitui/theme.ron".text = ''
     (
       selected_tab: Some("Reset"),
