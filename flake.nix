@@ -27,7 +27,7 @@
         programs.nixfmt.enable = true;
       };
 
-      colorschemes = import ./colorschemes.nix;
+      colorschemes = import ./assets/colorschemes.nix;
     in
     {
       formatter.${system} = treefmtEval.config.build.wrapper;
