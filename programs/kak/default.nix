@@ -58,69 +58,39 @@ in
   home.file.".config/kak-tree-sitter/config.toml".source =
     tomlFormat.generate "config.toml" ktsConfig;
 
-  programs.gitui = {
-    enable = true;
-    keyConfig = ''
-      move_left: Some(( code: Char('h'), modifiers: "")),
-      move_right: Some(( code: Char('l'), modifiers: "")),
-      move_up: Some(( code: Char('k'), modifiers: "")),
-      move_down: Some(( code: Char('j'), modifiers: "")),
-    '';
-    theme = ''
-      (
-        selected_tab: Some("Reset"),
-        command_fg: Some("#${config.stylix.base16Scheme.base05}"),
-        selection_bg: Some("#${config.stylix.base16Scheme.base04}"),
-        selection_fg: Some("#${config.stylix.base16Scheme.base05}"),
-        cmdbar_bg: Some("#${config.stylix.base16Scheme.base01}"),
-        cmdbar_extra_lines_bg: Some("#${config.stylix.base16Scheme.base01}"),
-        disabled_fg: Some("#${config.stylix.base16Scheme.base04}"),
-        diff_line_add: Some("#${config.stylix.base16Scheme.base0B}"),
-        diff_line_delete: Some("#${config.stylix.base16Scheme.base08}"),
-        diff_file_added: Some("#${config.stylix.base16Scheme.base0B}"),
-        diff_file_removed: Some("#${config.stylix.base16Scheme.base08}"),
-        diff_file_moved: Some("#${config.stylix.base16Scheme.base0E}"),
-        diff_file_modified: Some("#${config.stylix.base16Scheme.base09}"),
-        commit_hash: Some("#${config.stylix.base16Scheme.base07}"),
-        commit_time: Some("#${config.stylix.base16Scheme.base04}"),
-        commit_author: Some("#${config.stylix.base16Scheme.base0D}"),
-        danger_fg: Some("#${config.stylix.base16Scheme.base08}"),
-        push_gauge_bg: Some("#${config.stylix.base16Scheme.base0D}"),
-        push_gauge_fg: Some("#${config.stylix.base16Scheme.base00}"),
-        tag_fg: Some("#${config.stylix.base16Scheme.base06}"),
-        branch_fg: Some("#${config.stylix.base16Scheme.base0C}")
-      )
-    '';
-  };
-
   programs.broot = {
     enable = true;
     enableZshIntegration = true;
-    settings = {
-      default_flags = "-g";
-      show_selection_mark = true;
-      content_search_max_file_size = "10MB";
-      enable_kitty_keyboard = false;
-      lines_before_match_in_preview = 1;
-      lines_after_match_in_preview = 1;
-
-      verbs = [
-        {
-          name = "touch";
-          invocation = "t {new_file}";
-          execution = "touch {directory}/{new_file}";
-          leave_broot = false;
-        }
-        {
-          invocation = "cpa {test}";
-          external = "cp -r {directory}/* {dest}";
-          from_shell = true;
-        }
-      ];
-
-      skin = { };
-    };
   };
+
+  # hm settings are lackluster :(
+  home.file.".config/broot/conf.hjson".text = ''
+  default_flags: -g
+  show_selection_mark: true
+  content_search_max_file_size: 10MB
+  enable_kitty_keyboard: false
+  lines_before_match_in_preview: 1
+  lines_after_match_in_preview: 1
+
+  verbs: [
+    {
+      name: touch
+      invocation: t {new_file}
+      execution: "touch {directory}/{new_file}"
+      leave_broot: false
+    }
+    {
+      invocation: "cpa {dest}"
+      external: "cp -r {directory}/* {dest}"
+      from_shell: true
+    }
+  ]
+
+  skin: {
+    default: white none
+    input: white none
+  }
+  '';
 
   programs.kakoune = {
     enable = true;

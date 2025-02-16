@@ -3,6 +3,7 @@
   imports = [
     ./programs/kak
     ./programs/tmux.nix
+    ./programs/gitui.nix
     ./programs/shell.nix
   ];
 
