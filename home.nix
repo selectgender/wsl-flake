@@ -6,6 +6,7 @@
     ./programs/gitui.nix
     ./programs/broot.nix
     ./programs/shell.nix
+    ./programs/rokit.nix
   ];
 
   home.username = "ivy";

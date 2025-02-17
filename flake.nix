@@ -2,10 +2,14 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-ld.url = "github:Mic92/nix-ld";
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -13,9 +17,10 @@
       self,
       nixpkgs,
       nixos-wsl,
-      home-manager,
       stylix,
       treefmt-nix,
+      home-manager,
+      nix-ld,
       ...
     }@inputs:
     let
@@ -71,6 +76,8 @@
               stylix.polarity = "dark";
               stylix.base16Scheme = colorschemes.catppuccin-mocha;
             }
+            nix-ld.nixosModules.nix-ld
+            { programs.nix-ld.dev.enable = true; }
           ];
         };
       };
