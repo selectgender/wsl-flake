@@ -21,7 +21,7 @@ in
     keyMode = "vi";
     prefix = "C-a";
     reverseSplit = true;
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
 
     extraConfig = with config.lib.stylix.colors; ''
       set-option -sa terminal-overrides ",xterm*:Tc"
