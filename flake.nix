@@ -25,6 +25,12 @@
       treefmtEval = treefmt-nix.lib.evalModule pkgs {
         projectRootFile = "flake.nix";
         programs.nixfmt.enable = true;
+
+        settings.excludes = [
+          "*.jpg"
+          "*.kak"
+          "*.lock"
+        ];
       };
 
       colorschemes = import ./assets/colorschemes.nix;
